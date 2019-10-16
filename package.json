@@ -1,0 +1,40 @@
+{
+  "name": "start-with-sequelize-and-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "nodemon --exec babel-node index.js",
+    "eslint": "eslint",
+    "test": "NODE_ENV=test jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "pre-commit": "eslint",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.19.7",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "coveralls": "^3.0.7",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.4",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "supertest": "^4.0.2"
+  }
+}
