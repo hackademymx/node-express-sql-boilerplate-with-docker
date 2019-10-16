@@ -3,7 +3,7 @@ import routes from '../routes';
 
 const server = express();
 
-console.log('algo');
+console.log('algo s');
 
 server.use(express.json());
 
