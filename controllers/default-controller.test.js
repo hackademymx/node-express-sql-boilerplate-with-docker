@@ -1,13 +1,9 @@
-const supertest = require('supertest');
-const { server } = require('../index');
-
-function test() {
-  return supertest(server);
-}
+const request = require('supertest');
+const server = require('../server');
 
 describe('Default test', () => {
   it('[GET]: /suma', async () => {
-    await test()
+    await request(server)
       .get('/api/sum')
       .expect(200)
       .expect(res => {
@@ -17,7 +13,7 @@ describe('Default test', () => {
   });
 
   it('[GET]: /multiply', async () => {
-    await test()
+    await request(server)
       .get('/api/multiply')
       .expect(200)
       .expect(res => {
