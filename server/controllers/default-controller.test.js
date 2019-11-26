@@ -1,5 +1,5 @@
 const request = require('supertest');
-const server = require('../server');
+const server = require('..');
 
 describe('Default test', () => {
   it('[GET]: /suma', async () => {
