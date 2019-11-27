@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:11.5'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=talentland
+      - POSTGRES_DB=talentdb
+      - POSTGRES_PASSWORD=donitas123
+      - PGDATA=/var/lib/postgresql/data/pgdata
+  api:
+    depends_on:
+      - postgres
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    restart: always
+    ports:
+      - '5000:5000'
+    volumes:
+      - /app/node_modules
+      - .:/app/
+    environment:
+      - PGUSER=talentland
+      - PGHOST=postgres
+      - PGDATABASE=talentdb
+      - PGPASSWORD=donitas123
+      - PGPORT=5432
