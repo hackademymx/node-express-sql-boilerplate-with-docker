@@ -4,6 +4,14 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes';
 
+// // DB
+import db from './config/database';
+
+// Test db
+db.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(err => console.log('Error DB => ', err));
+
 const server = express();
 
 server.use(cors());
