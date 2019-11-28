@@ -1,4 +1,5 @@
 import * as defaultCrt from './default-controller';
-import * as gigs from './gigs';
+import * as user from './user';
+import * as message from './message';
 
-export { defaultCrt, gigs };
+export { defaultCrt, user, message };

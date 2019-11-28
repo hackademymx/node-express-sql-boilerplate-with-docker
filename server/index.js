@@ -4,10 +4,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes';
 
-// // DB
+/** DB */
 import db from './config/database';
+import models from './models';
 
-// Test db
+/** TEST db */
 db.authenticate()
   .then(() => console.log('Database connected...'))
   .catch(err => console.log('Error DB => ', err));
