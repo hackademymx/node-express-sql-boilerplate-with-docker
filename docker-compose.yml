@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  postgresnode:
+  postgres:
     image: 'postgres:11.5'
     ports:
       - '5432:5432'
@@ -11,7 +11,7 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
   api:
     depends_on:
-      - postgresnode
+      - postgres
     build:
       dockerfile: Dockerfile.dev
       context: .
