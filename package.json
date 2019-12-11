@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon -L --exec babel-node index.js",
     "start": "node index.js",
     "eslint": "eslint .",
     "test": "NODE_ENV=test jest --watch",
