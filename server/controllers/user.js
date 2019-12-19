@@ -16,7 +16,28 @@ const add = async (req, res) => {
 
 const list = async (req, res) => {
   try {
-    const response = await models.User.findAll();
+    const response = await models.User.findAll({
+      include: [
+        {
+          model: models.Ticket,
+          attributes: ['id', 'description', 'feedback'],
+          include: [
+            {
+              model: models.Status,
+              attributes: ['id', 'value']
+            },
+            {
+              model: models.Request,
+              attributes: ['id', 'value']
+            },
+            {
+              model: models.Employee,
+              attributes: ['id', 'name', 'email']
+            }
+          ]
+        }
+      ]
+    });
 
     if (isEmpty(response)) return res.status(204).send('Not content');
 

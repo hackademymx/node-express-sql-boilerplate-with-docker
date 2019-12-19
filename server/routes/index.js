@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { catalogs, user, employee } from '../controllers';
+import { catalogs, user, employee, tickets } from '../controllers';
 
 const router = Router();
 
@@ -24,5 +24,12 @@ router.get('/employees', employee.list);
 router.get('/employees/:id', employee.byId);
 router.delete('/employees/:id', employee.remove);
 router.put('/employees/:id', employee.updateEmployee);
+
+/** Tickets */
+router.post('/tickets/create/:userId', tickets.createTicket);
+router.get('/tickets', tickets.list);
+router.get('/tickets/:ticketId', tickets.detail);
+router.put('/tickets/response/:ticketId', tickets.responseTicket);
+router.put('/tickets/close/:ticketId', tickets.closeTicket);
 
 export default router;
