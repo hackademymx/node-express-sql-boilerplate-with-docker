@@ -6,7 +6,6 @@ import routes from './routes';
 
 /** DB */
 import db from './config/database';
-import models from './models';
 
 /** TEST db */
 db.authenticate()

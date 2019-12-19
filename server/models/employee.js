@@ -2,11 +2,14 @@ const employee = (sequelize, DataTypes) => {
   const Employee = sequelize.define('employee', {
     name: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+      allowNull: false
     }
   });
 
