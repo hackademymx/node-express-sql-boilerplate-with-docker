@@ -10,6 +10,18 @@ docker exec -ti -u root #container_id /bin/bash
 
 npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
 
-# Migrate
+# Execute Migrate
 
-sequelize db:migrate --url "postgres://hackademy_user:tupass@postgres:5432/hackademydbtest"
+sequelize db:migrate --url "postgres://user_db:tupass@postgres:5432/boilerplate_db"
+
+# Create new migration
+
+npx sequelize-cli migration:create --name modify_users_add_new_fields
+
+---
+
+npx sequelize-cli model:generate --name Teacher --attributes firstName:string,lastName:string,email:string,age:integer
+
+npx sequelize-cli model:generate --name Course --attributes name:string,lastName:string,credits:integer
+
+npx sequelize-cli model:generate --name CourseTeacher --attributes teacherId:integer,courseId:integer

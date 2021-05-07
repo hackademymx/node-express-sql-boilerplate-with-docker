@@ -3,11 +3,13 @@ import models from '../../database/models';
 export const addUser = async (req, res) => {
   try {
     const { body } = req;
+    console.log('🚀 ~ file: user.js ~ line 6 ~ addUser ~ body', body);
 
     const createUser = await models.User.create({
       firstName: body.firstName,
       lastName: body.lastName,
-      email: body.email
+      email: body.email,
+      age: body.age
     });
 
     res.status(201).send(createUser);
