@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+  postgres:
+    image: 'postgres:12.2'
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_USER=user_db
+      - POSTGRES_DB=boilerplate_db
+      - POSTGRES_PASSWORD=tupass
+    volumes:
+      - 'pgdata-boilerplate:/var/lib/postgresql/data'
+
+  api:
+    depends_on:
+      - postgres
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    restart: unless-stopped
+    ports:
+      - '5050:5000'
+    volumes:
+      - .:/app/node_app
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - notused:/app/node_modules
+    environment:
+      - TZ=America/Mexico_City
+      - LC_CTYPE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - DB_USER=user_db
+      - PORT=5000
+      - DB_HOST=postgres
+      - DB_NAME=boilerplate_db
+      - DB_PASSWORD=tupass
+      - DB_PORT=5432
+
+volumes:
+  pgdata-boilerplate:
+  notused:

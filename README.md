@@ -1,27 +1,15 @@
-# Node.js/Express.js/Postgresql/ boilerplate with Docker
+# Run project
 
-**Stack**:
+docker-compose -f docker-compose-dev.yml up --build
 
-- Node
-- Express
-- Nodemon
-- Pg
-- Sequelize
-- Jest
-- Supertest
-- Eslint
-- Prettier
-- Docker
-- Docker-compose
+# Access to container
 
-> Editor recomended is "Visual Studio Code"
+docker exec -ti -u root #container_id /bin/bash
 
-**Run the boilerplate**
+# Generate model
 
-1. Execute in terminal `docker-compose up --build` in the root _boilerplate-node-express-postgresql-with-docker_ folder.
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
 
-2. In other terminal execute `npm install` in the root folder _boilerplate-node-express-postgresql-with-docker_ to install local dependencies for the good practices of code, dependencies like a eslint, prettier, pre-commit, etc.
+# Migrate
 
-**Visual Studio Code**
-
-For the good practices of code, activate the option `Editor: Format On Save` in the **setting** section.
+sequelize db:migrate --url "postgres://hackademy_user:tupass@postgres:5432/hackademydbtest"

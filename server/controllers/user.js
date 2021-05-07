@@ -1,23 +1,36 @@
-import models from '../models';
+import models from '../../database/models';
 
-/** Example controller */
-const getUsers = async (req, res) => {
+export const addUser = async (req, res) => {
+  try {
+    const { body } = req;
+
+    const createUser = await models.User.create({
+      firstName: body.firstName,
+      lastName: body.lastName,
+      email: body.email
+    });
+
+    res.status(201).send(createUser);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+export const getUsers = async (req, res) => {
   try {
     const users = await models.User.findAll();
-    res.send(users);
+    res.status(200).send(users);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-/** Example controller */
-const getUserById = async (req, res) => {
+export const getUsersById = async (req, res) => {
   try {
-    const users = await models.User.findByPk(req.params.userId);
-    res.send(users);
+    const { params } = req;
+    const user = await models.User.findByPk(params.id);
+    res.status(200).send(user);
   } catch (error) {
     res.status(500).send(error);
   }
 };
-
-export { getUsers, getUserById };
