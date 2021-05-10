@@ -8,7 +8,7 @@ docker exec -ti -u root #container_id /bin/bash
 
 # Generate model
 
-npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+npx sequelize-cli model:generate --name teachers --attributes firstName:string,lastName:string,email:string,age:integer
 
 # Execute Migrate
 
@@ -20,8 +20,14 @@ npx sequelize-cli migration:create --name modify_users_add_new_fields
 
 ---
 
-npx sequelize-cli model:generate --name Teacher --attributes firstName:string,lastName:string,email:string,age:integer
+npx sequelize-cli model:generate --name teachers --attributes firstName:string,lastName:string,email:string,age:integer
 
-npx sequelize-cli model:generate --name Course --attributes name:string,lastName:string,credits:integer
+npx sequelize-cli model:generate --name courses --attributes name:string,credits:integer
 
-npx sequelize-cli model:generate --name CourseTeacher --attributes teacherId:integer,courseId:integer
+npx sequelize-cli model:generate --name courseTeachers --attributes teacherId:integer,courseId:integer
+
+# Association
+
+https://sequelize.org/master/manual/assocs.html#:~:text=To%20do%20this%2C%20Sequelize%20provides,The%20BelongsToMany%20association
+
+- Affect the migrations to ref the tables

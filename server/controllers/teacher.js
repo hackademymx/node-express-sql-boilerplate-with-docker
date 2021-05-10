@@ -4,7 +4,7 @@ export const addTeacher = async (req, res) => {
   try {
     const { body } = req;
 
-    const createTeacher = await models.Teachers.create({
+    const createTeacher = await models.teachers.create({
       firstName: body.firstName,
       lastName: body.lastName,
       email: body.email,
@@ -21,7 +21,7 @@ export const addCourse = async (req, res) => {
   try {
     const { body } = req;
 
-    const createCourse = await models.Courses.create({
+    const createCourse = await models.courses.create({
       name: body.name,
       credits: body.credits
     });
@@ -36,7 +36,7 @@ export const addAssocitation = async (req, res) => {
   try {
     const { body } = req;
 
-    const add = await models.CourseTeachers.create({
+    const add = await models.courseTeachers.create({
       teacherId: body.teacherId,
       courseId: body.courseId
     });
@@ -48,14 +48,13 @@ export const addAssocitation = async (req, res) => {
 };
 
 export const getTeachers = async (req, res) => {
-  console.log('<<<<< HERE >>>');
   try {
     const { params } = req;
 
-    const getTeacher = await models.Teachers.findByPk(params.id, {
+    const getTeacher = await models.teachers.findByPk(params.id, {
       attributes: { exclude: ['createdAt', 'updatedAt'] },
       include: {
-        model: models.Courses
+        model: models.courses
       }
     });
     console.log('🚀 ~ file:  getTeacher', getTeacher);

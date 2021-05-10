@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return await queryInterface.createTable('CourseTeachers', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('courseTeachers', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
       teacherId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Teachers',
+          model: 'teachers',
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -20,7 +20,7 @@ module.exports = {
       courseId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Courses',
+          model: 'courses',
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -36,7 +36,7 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
-    return await queryInterface.dropTable('CourseTeachers');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('courseTeachers');
   }
 };
